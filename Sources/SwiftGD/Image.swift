@@ -194,6 +194,13 @@ public class Image {
 		gdImageGrayScale(internalImage)
 	}
 
+	public func clone() -> Image? {
+		if let newImage = gdImageClone(internalImage) {
+			return Image(gdImage: newImage)
+		}
+		return nil
+	}
+
 	deinit {
 		// always destroy our internal image resource
 		gdImageDestroy(internalImage)
